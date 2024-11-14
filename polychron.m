@@ -118,4 +118,5 @@ for i=1:Ne
         
      end;
     end;
+    disp(num2str(i));
 end;

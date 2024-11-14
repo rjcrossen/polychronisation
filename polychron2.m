@@ -1,5 +1,3 @@
-tic
-
 fname = 'Networks/500.mat';
 
 global a d N D pp s ppre dpre post pre delay T
@@ -104,5 +102,3 @@ for i=1:Ne
         pause(0);
     end   
 end
-
-toc

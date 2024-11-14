@@ -14,7 +14,7 @@ D=20;                   % maximal conduction delay
 sm=10;                  % maximal synaptic strength
 M=100;                  % number of synapses per neuron
 
-N_vec=[500, 1000];               % vector of the number of neurons in each sim (must be evenly dividible by ratio+1)
+N_vec=[500, 1000];               % vector of the number of neurons in each sim (must be evenly divisible by ratio+1)
 
 for h=1:length(N_vec)
 
