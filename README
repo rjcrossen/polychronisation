@@ -1,1 +1,9 @@
-Read me
+This is a repository featuring scripts used for a biologically plausible spiking neural network for my thesis.
+
+sequential_spnet.m is a modified version of Izhikevich's 2004 spiking neural network that simply has functionality to run multiple network simulations in a row.
+
+python_spnet.py has translated this network to Python with some slight quality of life improvements for future expansion on the features of the network.
+
+polychron2.m is a slightly modified version of Izhikevich's algorithm to find polychromous groups with quality of life improvements.
+
+polygroup.m is a helper function that is called from polychron2.m
