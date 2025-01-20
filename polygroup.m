@@ -5,7 +5,6 @@
 function group=polygroup(v0,t0)
     global a d N D pp s post ppre dpre pre delay T
     
-    
     v = -70*ones(N,1);                      % initial values
     u = 0.2.*v;                             % initial values
     I=zeros(N,T+D);
@@ -13,6 +12,7 @@ function group=polygroup(v0,t0)
     group.firings=[];                             % spike timings
     last_fired=-T+zeros(N,1);               % assume that no neurons fired yet
     group.gr=[];                                  % the group connectivity will be here
+    group.terminate=false;                        % should we terminate the loop that the funciton is called in?
     
     I(v0+N*t0)=1000;                        % fire the anchor neurons at the right times
     
@@ -26,7 +26,17 @@ function group=polygroup(v0,t0)
         v(fired)=-65;  
         u(fired)=u(fired)+d(fired);
         last_fired(fired)=t;
-        
+       
+        %if(t == max(t0) + D)
+         %   logical_index = true(N,1);
+          %  logical_index(v0) = false;
+           % if(all(last_fired(logical_index) == -150))
+            %    group.terminate = true;   % tell the script calling the function to terminate the loop
+             %   disp("terminating")
+              %  break;
+           % end
+       % end
+
         for k=1:length(fired)
             
             I(pp{fired(k)}+t*N)=I(pp{fired(k)}+t*N)+s(fired(k),:);
