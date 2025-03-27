@@ -8,14 +8,26 @@
 
 function parallel_polychron(varargin)
 
+% Calculate how many cores the script should use.
+% There is some instability when using all available cores, so default to
+% available cores - 2
+cores = feature('numCores');
+if cores - 2 >= 1
+    cores = cores - 2;
+end
+
 p = inputParser;
 
 addParameter(p, 'WorkspaceName', "");
 addParameter(p, 'WorkspaceFolder', "");
 addParameter(p, 'SaveFolder', "");
 addParameter(p, 'PathLength', 4);
+addParameter(p, 'Cores', cores);
 
 parse(p, varargin{:});
+
+% available cores
+available_cores = p.Results.Cores;
 
 % path to save workspace
 if ismember('SaveFolder', p.UsingDefaults)
@@ -92,7 +104,7 @@ end;
 sm_threshold = 0.95*sm;     % discard all weak exc->exc synapses
 s(find(post<Ne & s>0 & s<=sm_threshold))=0;
 
-parpool('Processes');
+parpool('Processes', available_cores);
 
 parfor i=1:Ne
     local_groups = {}; % Store results for this worker
