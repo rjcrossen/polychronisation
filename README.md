@@ -1,1 +1,1 @@
-Code for my MPhil thesis "Spatiotemporal Computation in Neuromorphic Networks"
+Code for my MPhil thesis "Spatiotemporal Computing in Neuromorphic Networks"
